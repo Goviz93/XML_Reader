@@ -1,8 +1,7 @@
-
 import os
 from pathlib import Path
 from bs4 import BeautifulSoup
-from DUTs import DUT_Classes as DUT
+from WalkTools.DUTs import DUT_Classes as DUT
 
 
 class FileAttr:
@@ -23,7 +22,7 @@ class FileAttr:
                 if file != None:
                     ListofPaths.append((os.path.join(root, file)))
                     FileNumber += 1
-        print(f'Total de archivos encontrados -> {FileNumber}')
+        print(f'Total Number of Files -> {FileNumber}')
         return FileNumber
 
 

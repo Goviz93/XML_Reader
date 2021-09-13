@@ -2,7 +2,7 @@
 import os
 from pathlib import Path
 from bs4 import BeautifulSoup
-from xmlTools import FileAttr
+from WalkTools.Classes.FileTools import FileAttr
 
 
 
@@ -14,22 +14,8 @@ filePath = Path(r'C:\Users\Gonzalo.Vizcaino\Desktop\Testing_Python\FlexFlow_File
 Signals_Tuple =('opcmtreq','opcmtres','rtchkreq','rtchkres')
 n = 0
 
-
-
-
 ListofPaths = list()
 FileNumber = 0
-
-for root,dir,files in os.walk(filePath):
-    for file in files:
-        # print(os.path.join(root,file))
-        if file != None:
-            #print(f' Nombre -> {(os.path.join(root, file))}')
-            ListofPaths.append((os.path.join(root, file)))
-            FileNumber += 1
-print(f'Total de archivos encontrados -> {FileNumber}')
-print(f'Nombre del archivo --> {ListofPaths[n]}')
-
 
 
 with open(ListofPaths[n]) as xml:
@@ -48,8 +34,12 @@ with open(ListofPaths[n]) as xml:
 
 FileName = 'opcmtreq_11-01-2021  16.07.13.164.xml'
 
-FileTools = FileAttr(filePath)
 
-#FileTools.TotalFiles(filePath)
-#FileTools.SeachFileByName(filePath,FileName)
-FileTools.SeachEmptyFiles(filePath)
+
+
+
+FT = FileAttr(filePath)
+
+#FT.TotalFiles(filePath)
+#FT.SeachFileByName(filePath,FileName)
+FT.SeachEmptyFiles(filePath)
