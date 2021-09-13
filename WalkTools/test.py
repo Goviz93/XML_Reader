@@ -40,6 +40,6 @@ FileName = 'opcmtreq_11-01-2021  16.07.13.164.xml'
 
 FT = FileAttr(filePath)
 
-#FT.TotalFiles(filePath)
+FT.TotalFiles(filePath)
 #FT.SeachFileByName(filePath,FileName)
-FT.SeachEmptyFiles(filePath)
+#FT.SeachEmptyFiles(filePath)
