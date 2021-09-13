@@ -51,12 +51,21 @@ class FileAttr:
 
         for root,dir,files in os.walk(self.Filepath):
             for file in files:
-                if file is None:
-                    FileNumber += 1
+                if file != None:
                     filePath = ((os.path.join(root, file)))
-                    Match = DUT.File_DUT(FileNumber, file, filePath)
-                    ListOfFiles.append(Match)
-                    print(f'ID - {Match.ID}) Name : {Match.FileName} | Path -> {Match.Filepath}')
+                    if os.stat(filePath).st_size == 0:
+                        FileNumber += 1
+                        Match = DUT.File_DUT(FileNumber, file, filePath)
+                        ListOfFiles.append(Match)
+                        print(f'ID - {Match.ID}) Name : {Match.FileName} | Path -> {Match.Filepath}')
+                    else:
+                        with open(filePath,'r') as F:
+                            FirstChar = F.read(100)
+                            if not FirstChar:
+                                FileNumber += 1
+                                Match = DUT.File_DUT(FileNumber, file, filePath)
+                                ListOfFiles.append(Match)
+                                print(f'ID - {Match.ID}) Name : {Match.FileName} | Path -> {Match.Filepath}')
         return ListOfFiles
 
 
@@ -64,14 +73,10 @@ class FileAttr:
     def GetPaths(self,filepath):
         self.Filepath = filepath
         ListOfFiles = list()
-        FileNumber = 0
 
         for root,dir,files in os.walk(self.Filepath):
             for file in files:
                 if file != None:
-                    FileNumber += 1
                     filePath = ((os.path.join(root, file)))
-                    Match = DUT.File_DUT(FileNumber, file, filePath)
-                    ListOfFiles.append(Match)
-                    print(f'ID - {Match.ID}) Name : {Match.FileName} | Path -> {Match.Filepath}')
+                    ListOfFiles.append(filePath)
         return ListOfFiles
