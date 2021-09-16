@@ -16,7 +16,7 @@
 
 import os
 from pathlib import Path,PurePath
-from WalkTools import WalkTools as Tool
+from Tools import WalkTools as Tool
 
 #Set the Folder root.
 filePath = Path(r'C:\Users\Gonzalo.Vizcaino\Desktop\Testing_Python\FlexFlow_Files\BRC_Flexflow_st300')

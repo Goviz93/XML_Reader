@@ -1,7 +1,7 @@
 import os
 from pathlib import Path
 from bs4 import BeautifulSoup
-from WalkTools.DUTs import DUT_Classes as DUT
+from Tools.DUTs import DUT_Classes as DUT
 
 
 class FileAttr:

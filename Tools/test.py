@@ -2,8 +2,7 @@
 import os
 from pathlib import Path
 from bs4 import BeautifulSoup
-from WalkTools.Classes.FileTools import FileAttr
-
+from Tools.Classes.FileTools import FileAttr
 
 
 
@@ -17,7 +16,7 @@ n = 0
 ListofPaths = list()
 FileNumber = 0
 
-
+"""
 with open(ListofPaths[n]) as xml:
     try:
         Soup = BeautifulSoup(xml,"lxml")
@@ -32,6 +31,7 @@ with open(ListofPaths[n]) as xml:
     except SyntaxError:
         print("Syntax Error Founded : ", ListofPaths[n])
 
+"""
 FileName = 'opcmtreq_11-01-2021  16.07.13.164.xml'
 
 
@@ -40,6 +40,6 @@ FileName = 'opcmtreq_11-01-2021  16.07.13.164.xml'
 
 FT = FileAttr(filePath)
 
-FT.TotalFiles(filePath)
+#FT.TotalFiles(filePath)
 #FT.SeachFileByName(filePath,FileName)
-#FT.SeachEmptyFiles(filePath)
+FT.SeachEmptyFiles(filePath)
