@@ -34,13 +34,15 @@ class xmlReader:
 
 
 
-    def CountMatchFilesByType(self, DirPath:Path, MatchWord:str):
+    def CountMatchFilesByType(self, DirPath:Path, MatchWord:str,ReturnPaths:bool=False):
         ValidPath = os.path.isdir(DirPath)
         if ValidPath == True:
+
+            returnPaths = list()
+            FileNumber = 0
+
             FT = FileAttr(DirPath)
             PathList = FT.GetPaths(DirPath,True,0)
-
-            FileNumber = 0
             for file in PathList:
                 with open(file) as xml:
                     try:
@@ -50,7 +52,7 @@ class xmlReader:
                             try:
                                 if FileType.string == MatchWord:
                                     FileNumber += 1
-
+                                    returnPaths.append(DUT.File_DUT(FileNumber,os.path.basename(file),file))
                             except AttributeError:
                                  print("AttributeError Error Founded : ", file)
 
@@ -58,3 +60,5 @@ class xmlReader:
                         print("Syntax Error Founded : ", file)
 
             print(f'Matches Found With -{MatchWord}- : {FileNumber}')
+            if ReturnPaths :
+                return returnPaths

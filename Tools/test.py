@@ -18,27 +18,13 @@ n = 0
 ListofPaths = list()
 FileNumber = 0
 
-"""
-with open(ListofPaths[n]) as xml:
-    try:
-        Soup = BeautifulSoup(xml,"lxml")
-        for node in Soup:
-            FileType = node.signal
-            print(f'Tipo de Archivo : {FileType.contents[0]}')
-
-
-        #print(Soup.find_parent('signal'))
-
-
-    except SyntaxError:
-        print("Syntax Error Founded : ", ListofPaths[n])
-
-"""
 FileName = 'opcmtreq_11-01-2021  16.07.13.164.xml'
 
 
 
-
+"""
+ All functions
+"""
 
 FT = FileAttr(filePath)
 
@@ -53,4 +39,6 @@ FT = FileAttr(filePath)
 path2 = Path(r'C:\Users\Gonzalo.Vizcaino\Desktop\Testing_Python\FlexFlow_Files\BRC_Flexflow_st300\27X210106680\opcmtreq_11-01-2021  16.07.13.164.xml')
 RXML = xmlReader()
 #RXML.ReadSingleXML(path2)
-RXML.CountMatchFilesByType(filePath,'opcmtreq')
+Arr = RXML.CountMatchFilesByType(filePath,'opcmtreq',True)
+for route in Arr:
+    print(route)
