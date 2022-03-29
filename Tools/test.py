@@ -1,15 +1,13 @@
 
-import os
 from pathlib import Path
-from bs4 import BeautifulSoup
-from Tools.Classes.FileTools import FileAttr
-from Tools.Classes.xmlTools import xmlReader
+from Classes.FileTools import FileAttr
+from Classes.xmlTools import xmlReader
 
 
 
 
 
-filePath = Path(r'C:\Users\Gonzalo.Vizcaino\Desktop\Testing_Python\FlexFlow_Files\BRC_Flexflow_st300')
+filePath = Path(r'C:\Users\Gonzalo.Vizcaino\OneDrive - Bright Machines\Desktop\GenFlexFlow\IoT\Product')
 
 
 Signals_Tuple =('opcmtreq','opcmtres','rtchkreq','rtchkres')
@@ -18,7 +16,7 @@ n = 0
 ListofPaths = list()
 FileNumber = 0
 
-FileName = 'opcmtreq_11-01-2021  16.07.13.164.xml'
+FileName = 'opcmtres_28-03-2022  12.30.04.042.xml'
 
 
 
@@ -36,14 +34,15 @@ FT = FileAttr(filePath)
 #    print(f'{index} -> {route}')
 
 
-path2 = Path(r'C:\Users\Gonzalo.Vizcaino\Desktop\Testing_Python\FlexFlow_Files\BRC_Flexflow_st300\27X210106680\opcmtreq_11-01-2021  16.07.13.164.xml')
+#path2 = Path(r'C:\Users\Gonzalo.Vizcaino\Desktop\Testing_Python\FlexFlow_Files\BRC_Flexflow_st300\27X210106680\opcmtreq_11-01-2021  16.07.13.164.xml')
 RXML = xmlReader()
 #RXML.ReadSingleXML(path2)
-#Arr = RXML.CountMatchFilesByType(filePath,'opcmtreq',True)
-#for route in Arr:
-#    print(route)
-
-Arr = RXML.SearchText(filePath,'OK',True)
+Arr = RXML.CountMatchFilesByType(filePath,Signals_Tuple[2],True)
 for route in Arr:
     print(route)
 
+"""
+Arr = RXML.SearchText(filePath,'112180LP8,00219 220323',True)
+for route in Arr:
+    print(route)
+"""
